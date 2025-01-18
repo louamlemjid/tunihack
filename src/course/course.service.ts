@@ -29,14 +29,14 @@ export class CourseService {
   findFilter(filter:any){
     console.log("filter: ",filter);
     let courses=[];
-    filter?.name && (courses = this.courses.filter(course => course.name === filter.name));
-    filter?.category && (courses = this.courses.filter(course => course.category === filter.category));
-    filter?.difficulty && (courses = this.courses.filter(course => course.difficulty === filter.difficulty));
-    filter?.price && (courses = this.courses.filter(course => course.price === filter.price));
-    filter?.rating && (courses = this.courses.filter(course => course.rating === filter.rating));
-    filter?.creator && (courses = this.courses.filter(course => course.creator === filter.creator));
-    filter?.views && (courses = this.courses.filter(course => course.views === filter.views));
-    filter?.duration && (courses = this.courses.filter(course => course.duration === filter.duration));
+    filter?.name && (courses = this.courses.filter(course => course.name.startsWith(filter.name)));
+    filter?.category && (courses = this.courses.filter(course => course.category.startsWith(filter.category)));
+    filter?.difficulty && (courses = this.courses.filter(course => course.difficulty.startsWith(filter.difficulty)));
+    filter?.price && (courses = this.courses.filter(course => course.price===Number(filter.price)));
+    filter?.rating && (courses = this.courses.filter(course => course.rating===Number(filter.rating)));
+    filter?.creator && (courses = this.courses.filter(course => course.creator.startsWith(filter.creator)));
+    filter?.views && (courses = this.courses.filter(course => course.views===Number(filter.views)));
+    filter?.duration && (courses = this.courses.filter(course => course.duration===Number(filter.duration)));
     
     return courses;
   }

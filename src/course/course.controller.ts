@@ -21,8 +21,8 @@ export class CourseController {
   findOne(@Param('name') name: string) {
     return this.courseService.find(name);
   }
-  @Get("/filter")
-  findFilter(@Query("filter") filter: any) {
+  @Get()
+  findFilter(@Query() filter: any) {
     return this.courseService.findFilter(filter);
   }
 
