@@ -17,9 +17,9 @@ export class UserController {
     return this.userService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.userService.findOne(+id);
+  @Get(':name')
+  findOne(@Param('name') name: string) {
+    return this.userService.findOne(name);
   }
 
   @Patch(':id')
@@ -28,7 +28,11 @@ export class UserController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.userService.remove(+id);
+  remove(@Param('id') name: string) {
+    return this.userService.remove(name);
+  }
+  @Post(':name/course')
+  addCourse(@Param('name') name: string,@Body() createCourseDto) {
+    return this.userService.addCourse(name,createCourseDto);
   }
 }
